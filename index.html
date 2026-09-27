@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro Integral de la Comunicación — ComunicaKits</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bone:#F3FAFA;
+    --ink:#0E3A4A;
+    --coral:#2FA8A0;
+    --coral-dark:#237F79;
+    --sage:#5C93A0;
+    --clinic-blue:#0F3D57;
+    --clinic-blue-light:#164F6E;
+    --line:#D7EAE9;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    background:var(--bone);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--sage);
+    font-weight:600;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,247,242,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--ink);
+    display:flex; align-items:center; gap:10px;
+    line-height:1.15;
+  }
+  .brand span{color:var(--coral); font-weight:700;}
+  .nav-sub{font-size:0.68rem; color:var(--sage); display:block; font-family:'Inter',sans-serif; letter-spacing:0.02em; margin-top:1px;}
+  .nav-cta{
+    background:var(--clinic-blue);
+    color:white;
+    padding:10px 18px;
+    border-radius:100px;
+    font-size:0.82rem;
+    font-weight:600;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:64px 24px 48px;
+    max-width:640px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .hero .eyebrow{margin-bottom:18px; display:block;}
+  .hero h1{
+    font-size:2.5rem;
+    line-height:1.08;
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--coral);
+  }
+  .hero p{
+    font-size:1.05rem;
+    color:#4B5563;
+    max-width:480px;
+    margin:0 auto 32px;
+  }
+  .hero-actions{
+    display:flex; flex-direction:column; gap:12px; align-items:center;
+    margin-top:36px;
+  }
+  .btn-primary{
+    background:var(--coral);
+    color:white;
+    padding:15px 32px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 8px 20px -8px rgba(227,128,106,0.6);
+    transition:transform 0.15s ease;
+  }
+  .btn-primary:active{transform:scale(0.97);}
+  .btn-secondary{
+    color:var(--ink);
+    font-size:0.85rem;
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:4px;
+  }
+
+  /* signature strip: instrument reference card look */
+  .ref-strip{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin:40px auto 0;
+    max-width:560px;
+  }
+  .ref-strip img{
+    width:33.333%;
+    height:150px;
+    object-fit:cover;
+    display:block;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:white;
+    filter:saturate(0.85);
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section{
+    max-width:1120px;
+    margin:0 auto;
+    padding:64px 24px;
+  }
+  .section-head{
+    text-align:center;
+    max-width:560px;
+    margin:0 auto 48px;
+  }
+  .section-head .eyebrow{margin-bottom:14px; display:block;}
+  .section-head h2{
+    font-size:1.9rem;
+    margin-bottom:14px;
+  }
+  .section-head p{color:#4B5563; font-size:1rem;}
+
+  /* ===== VALUE PROPS ===== */
+  .props{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .prop{
+    background:var(--bone);
+    padding:22px 20px;
+    text-align:left;
+  }
+  .prop .num{
+    font-family:'Fraunces',serif;
+    font-size:0.85rem;
+    color:var(--coral);
+    font-weight:600;
+    margin-bottom:12px;
+    display:block;
+  }
+  .prop h3{font-size:1.05rem; margin-bottom:8px;}
+  .prop p{font-size:0.9rem; color:#5B6472;}
+
+  /* ===== CATALOG ===== */
+  .category-title{
+    font-family:'Fraunces',serif;
+    font-size:1.3rem;
+    color:var(--ink);
+    margin:48px 0 20px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--line);
+  }
+  .catalog-grid:first-of-type{margin-top:0;}
+  .catalog-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-bottom:8px;
+  }
+  .kit-card{
+    background:var(--clinic-blue);
+    border-radius:18px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .kit-photo{
+    background:var(--clinic-blue-light);
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:220px;
+  }
+  .kit-photo img{
+    max-width:100%;
+    max-height:220px;
+    object-fit:contain;
+    border-radius:6px;
+  }
+  .kit-photo.duo{gap:8px;}
+  .kit-photo.duo img{max-width:47%;}
+  .kit-body{
+    background:var(--bone);
+    padding:22px 22px 24px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .kit-ref{
+    font-size:0.68rem;
+    color:var(--sage);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .kit-body h3{
+    font-size:1.15rem;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+  .kit-body p{
+    font-size:0.85rem;
+    color:#5B6472;
+    flex:1;
+    margin-bottom:16px;
+  }
+  .kit-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+  .kit-price{
+    font-family:'Fraunces',serif;
+    font-size:1.3rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .kit-btn{
+    background:var(--coral);
+    color:white;
+    font-size:0.78rem;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:100px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .kit-card.featured{
+    grid-column:span 1;
+  }
+  .featured .kit-photo{min-height:220px;}
+  .featured-inner{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .featured .kit-body{padding:28px;}
+  .featured .kit-body h3{font-size:1.4rem;}
+  .kit-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px 16px;
+    margin-bottom:16px;
+    font-size:0.83rem;
+    color:#4B5563;
+  }
+  .kit-list li{padding-left:20px; position:relative;}
+  .kit-list li::before{
+    content:"–";
+    position:absolute;
+    left:0;
+    color:var(--sage);
+  }
+
+  /* ===== ABOUT ===== */
+  .about-section{
+    background:var(--clinic-blue);
+    color:white;
+  }
+  .about-section .eyebrow{color:#9FB0E8;}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .about-grid h2{color:white; font-size:1.8rem; margin-bottom:18px;}
+  .about-grid p{color:#C7CEE8; font-size:0.95rem; margin-bottom:16px;}
+  .about-badge{
+    display:inline-block;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:6px 14px;
+    border-radius:100px;
+    font-size:0.78rem;
+    margin-bottom:18px;
+    color:white;
+  }
+  .about-photo-wrap{
+    background:#3C4BA6;
+    border-radius:20px;
+    padding:24px;
+  }
+  .about-photo-wrap img{
+    width:100%;
+    border-radius:12px;
+    display:block;
+  }
+  .signatures{
+    margin-top:20px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:white;
+    font-size:1rem;
+  }
+
+  /* ===== FEATURES STRIP ===== */
+  .features-strip{
+    display:flex;
+    justify-content:center;
+    gap:32px;
+    flex-wrap:wrap;
+    padding:16px 24px;
+    max-width:900px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .feature-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    max-width:160px;
+  }
+  .feature-icon{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:white;
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.2rem;
+  }
+  .feature-item span{font-size:0.82rem; color:#4B5563; font-weight:500;}
+
+  /* ===== CONTACT / CTA ===== */
+  .cta-section{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto;
+    padding:32px 24px 48px;
+  }
+  .cta-section h2{font-size:2rem; margin-bottom:16px;}
+  .cta-section p{color:#4B5563; margin-bottom:32px; font-size:1rem;}
+  .contact-cards{
+    display:flex;
+    justify-content:center;
+    gap:48px;
+    margin-top:36px;
+  }
+  .contact-card{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px;
+    text-decoration:none;
+    color:var(--ink);
+    text-align:left;
+  }
+  .contact-card .label{font-size:0.72rem; color:var(--sage); text-transform:uppercase; letter-spacing:0.08em; font-weight:600; margin-bottom:6px; display:block;}
+  .contact-card .value{font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600;}
+
+  footer{
+    text-align:center;
+    padding:32px 24px;
+    border-top:1px solid var(--line);
+    color:var(--sage);
+    font-size:0.8rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  /* WhatsApp floating button */
+  .wa-float{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    background:#25D366;
+    color:white;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 24px -6px rgba(37,211,102,0.55);
+    z-index:100;
+    text-decoration:none;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 10px 24px -6px rgba(37,211,102,0.55);}
+    50%{box-shadow:0 10px 28px -4px rgba(37,211,102,0.75);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .wa-float{animation:none;}
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:760px){
+    .hero h1{font-size:1.9rem;}
+    .props{grid-template-columns:1fr;}
+    .catalog-grid{grid-template-columns:1fr;}
+    .kit-card.featured{grid-column:span 1;}
+    .featured-inner{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo-wrap{order:-1;}
+    .contact-cards{grid-template-columns:1fr;}
+    .kit-list{grid-template-columns:1fr;}
+    .ref-strip img{height:110px;}
+    nav{padding:14px 16px;}
+    .nav-cta{padding:9px 14px; font-size:0.75rem;}
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--coral);
+    outline-offset:3px;
+  }
+  /* ===== COVERAGE CARD (obras sociales destacada) ===== */
+  .coverage-card{
+    background:var(--clinic-blue);
+    border-radius:20px;
+    padding:28px 28px 24px;
+    max-width:640px;
+    margin:40px auto 0;
+    text-align:left;
+  }
+  .coverage-card-title{
+    color:white;
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  .coverage-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-bottom:18px;
+  }
+  .coverage-chips span{
+    background:rgba(255,255,255,0.12);
+    color:white;
+    font-size:0.8rem;
+    padding:6px 14px;
+    border-radius:100px;
+    font-weight:500;
+  }
+  .coverage-chips span.more{
+    background:rgba(255,255,255,0.22);
+    font-weight:600;
+  }
+  .coverage-card-footer{
+    text-align:center;
+    font-size:0.95rem;
+    font-weight:500;
+    color:#E8F2F1;
+    border-top:1px solid rgba(255,255,255,0.15);
+    padding-top:16px;
+  }
+  .coverage-card-footer button{
+    display:block;
+    margin:10px auto 0;
+    background:white;
+    color:var(--clinic-blue);
+    border:none;
+    padding:9px 20px;
+    border-radius:100px;
+    font-size:0.82rem;
+    font-weight:600;
+    cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+
+  /* ===== COVERAGE BAR (obras sociales) ===== */
+  .coverage-bar{
+    background:var(--clinic-blue);
+    color:white;
+    padding:12px 20px;
+    text-align:center;
+    font-size:0.82rem;
+  }
+  .coverage-bar strong{font-weight:600;}
+  .coverage-bar button{
+    background:none;
+    border:none;
+    color:#9FD8D2;
+    text-decoration:underline;
+    font-size:0.85rem;
+    cursor:pointer;
+    font-family:'Inter',sans-serif;
+    margin-left:6px;
+  }
+
+  /* ===== INTRO STRIP (specialty + address) ===== */
+  .intro-strip{
+    max-width:900px;
+    margin:36px auto 0;
+    text-align:center;
+  }
+  .intro-strip h2{
+    font-size:1.5rem;
+    margin-bottom:8px;
+  }
+  .intro-strip p{
+    color:#4B5563;
+    font-size:0.95rem;
+  }
+  .intro-tags{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:18px;
+  }
+  .intro-tag{
+    background:white;
+    border:1px solid var(--line);
+    padding:8px 16px;
+    border-radius:100px;
+    font-size:0.82rem;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .intro-address{
+    margin-top:20px;
+    font-size:0.88rem;
+    color:var(--sage);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+  }
+
+  /* ===== COVERAGE MODAL ===== */
+  .coverage-modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(14,58,74,0.5);
+    z-index:200;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .coverage-modal-overlay.open{display:flex;}
+  .coverage-modal{
+    background:white;
+    border-radius:20px;
+    max-width:640px;
+    width:100%;
+    max-height:80vh;
+    overflow-y:auto;
+    padding:32px;
+    position:relative;
+  }
+  .coverage-modal h3{
+    font-size:1.3rem;
+    margin-bottom:6px;
+  }
+  .coverage-modal .sub{
+    font-size:0.85rem;
+    color:var(--sage);
+    margin-bottom:20px;
+  }
+  .coverage-modal-close{
+    position:absolute;
+    top:20px; right:20px;
+    background:var(--bone);
+    border:none;
+    width:32px; height:32px;
+    border-radius:50%;
+    font-size:1.1rem;
+    cursor:pointer;
+    color:var(--ink);
+  }
+  .coverage-list{
+    columns:2;
+    column-gap:24px;
+    list-style:none;
+    font-size:0.88rem;
+    color:#374151;
+  }
+  .coverage-list li{
+    padding:5px 0;
+    break-inside:avoid;
+  }
+  .coverage-extra{
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:0.88rem;
+    font-weight:600;
+    color:var(--coral-dark);
+  }
+
+  /* ===== TEAM ===== */
+  .team-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    max-width:380px;
+    margin:0 auto;
+  }
+  .team-card{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 10px;
+    text-align:center;
+  }
+  .team-card img{
+    width:64px; height:64px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:0 auto 8px;
+    display:block;
+    border:2px solid var(--bone);
+    box-shadow:0 0 0 1px var(--line);
+  }
+  .team-card h3{
+    font-size:0.92rem;
+    margin-bottom:3px;
+    color:var(--ink);
+  }
+  .team-card .role{
+    font-size:0.72rem;
+    color:var(--coral-dark);
+    font-weight:600;
+    margin-bottom:1px;
+  }
+  .team-card .mat{
+    font-size:0.68rem;
+    color:var(--sage);
+    margin-bottom:8px;
+  }
+  .team-card .phone{
+    font-size:0.75rem;
+    color:var(--ink);
+    font-weight:600;
+    text-decoration:none;
+    display:inline-block;
+    padding:6px 14px;
+    background:var(--bone);
+    border-radius:100px;
+  }
+
+  @media (max-width:760px){
+    .coverage-list{columns:1;}
+  }
+</style>
+</head>
+<body>
+
+<div class="coverage-modal-overlay" id="coverageModal">
+  <div class="coverage-modal">
+    <button class="coverage-modal-close" onclick="document.getElementById('coverageModal').classList.remove('open')" aria-label="Cerrar">✕</button>
+    <h3>Obras sociales y prepagas</h3>
+    <div class="sub">Fonoaudiología para niños, adolescentes y adultos</div>
+    <ul class="coverage-list">
+      <li>Avalian</li>
+      <li>Alianza Médica</li>
+      <li>AMA-APLA (Medicyn)</li>
+      <li>AMOEIAG - Sutiaga</li>
+      <li>Caja de Ingenieros</li>
+      <li>Caja Forense</li>
+      <li>Ciencias Económicas</li>
+      <li>Dasuten</li>
+      <li>DEMI Salud</li>
+      <li>Energía Salud (Agua y Energía)</li>
+      <li>Federada Salud</li>
+      <li>Futbolistas</li>
+      <li>IAPOS</li>
+      <li>Jerárquicos Salud</li>
+      <li>Luis Pasteur</li>
+      <li>Mutualyf</li>
+      <li>OSPAC</li>
+      <li>Poder Judicial</li>
+      <li>OSPRO</li>
+      <li>OPDEA</li>
+      <li>OSPAVIAL</li>
+      <li>Prevención Salud</li>
+      <li>SADAIC</li>
+      <li>Sancor Salud</li>
+      <li>Swiss Medical</li>
+    </ul>
+    <div class="coverage-extra">+ CUD (todas las obras sociales) y atención particular</div>
+  </div>
+</div>
+
+<nav>
+  <div class="brand">
+    <img src="images/logo-icon.png" alt="Logo Centro Integral de la Comunicación" style="height:52px; width:auto;">
+    <span>Centro Integral de la Comunicación</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <span class="eyebrow" style="font-size:0.9rem;">Centro Integral de la Comunicación</span>
+  <h1>Un lugar para <em>escuchar, acompañar y potenciar</em> cada proceso.</h1>
+  <p>Un espacio pensado para acompañar procesos, potenciar habilidades y construir juntos cada objetivo — con una mirada integral de cada persona y cada familia.</p>
+
+  <div class="coverage-card">
+    <div class="coverage-card-title">🏥 Trabajamos con obras sociales y prepagas</div>
+    <div class="coverage-chips">
+      <span>IAPOS</span>
+      <span>Swiss Medical</span>
+      <span>Sancor Salud</span>
+      <span>OSPRO</span>
+      <span>Poder Judicial</span>
+      <span>Jerárquicos Salud</span>
+      <span class="more">+ 19 más</span>
+    </div>
+    <div class="coverage-card-footer">
+      Incluye CUD (todas las obras sociales) y atención particular.
+      <button onclick="document.getElementById('coverageModal').classList.add('open')">Ver listado completo →</button>
+    </div>
+  </div>
+
+  <div class="intro-strip">
+    <div class="intro-tags">
+      <span class="intro-tag">👶 Niños</span>
+      <span class="intro-tag">🧑 Adolescentes</span>
+      <span class="intro-tag">🧓 Adultos</span>
+    </div>
+    <div class="intro-address">📍 Pte. Roca y 3 de Febrero, Rosario</div>
+  </div>
+</section>
+
+<section class="section about-section" style="border-radius:24px; max-width:760px; padding:48px 32px; margin:0 auto 64px;">
+  <div class="about-grid" style="grid-template-columns:1fr;">
+    <div style="text-align:center; max-width:640px; margin:0 auto;">
+      <span class="about-badge">Quiénes somos</span>
+      <h2>Mucho más que "enseñar a hablar"</h2>
+      <p>Somos Leticia y Jorgelina, Licenciadas en Fonoaudiología recibidas en la Universidad Nacional de Rosario. Nos conocimos trabajando juntas hace ya diez años y, desde entonces, construimos una forma de acompañar basada en el compromiso, la escucha, el trabajo en equipo y una mirada integral de cada persona y cada familia.</p>
+      <p>Después de muchos años compartiendo trabajo, aprendizajes, desafíos y crecimiento profesional, decidimos dar un paso que nos llena de ilusión: abrir nuestro propio espacio. Un lugar pensado para acompañar procesos, potenciar habilidades y construir juntos cada objetivo.</p>
+      <div class="signatures">— Leticia & Jorgelina</div>
+    </div>
+  </div>
+
+  <div style="max-width:220px; margin:32px auto 0; border-radius:16px; overflow:hidden; border:3px solid rgba(255,255,255,0.15);">
+    <img src="images/leti-y-jor.jpeg" alt="Leticia y Jorgelina, fundadoras de Centro Integral de la Comunicación" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+  </div>
+
+  <div class="team-grid" style="margin-top:40px;">
+    <div class="team-card">
+      <img src="images/jor.jpeg" alt="Jorgelina Cantarini">
+      <h3>Jorgelina Cantarini</h3>
+      <div class="role">Lic. en Fonoaudiología</div>
+      <div class="mat">Mat. 1409/2</div>
+      <a class="phone" href="https://wa.me/5493416184400" target="_blank" rel="noopener">3416 184400</a>
+    </div>
+    <div class="team-card">
+      <img src="images/leti.jpeg" alt="Leticia Gorostiaga">
+      <h3>Leticia Gorostiaga</h3>
+      <div class="role">Lic. en Fonoaudiología</div>
+      <div class="mat">Mat. 1457/2</div>
+      <a class="phone" href="https://wa.me/5493416615698" target="_blank" rel="noopener">3416 615698</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:14px;">
+      <img src="images/logo-comunicakits-icon.png" alt="Logo ComunicaKits" style="height:42px; width:auto;">
+      <span style="font-family:'Fraunces',serif; font-size:1.05rem; font-weight:700; color:var(--coral-dark); letter-spacing:0.01em;">ComunicaKits</span>
+    </div>
+    <h2>Guías miofuncionales y dispositivos de apoyo</h2>
+    <p>Nacieron para dar continuidad al tratamiento: que la práctica en casa se sostenga con la misma calidad que en el consultorio, favoreciendo la constancia y potenciando los resultados.</p>
+    <p style="color:#4B5563; font-size:0.95rem; margin-top:14px;">Kits diseñados para acompañar cada etapa del aprendizaje y la rehabilitación fonoaudiológica — en el consultorio y en casa. Resistentes, reutilizables y fáciles de higienizar.</p>
+  </div>
+
+  <div class="ref-strip">
+    <img src="images/adaptador-agarre-mano.jpg" alt="Adaptador Universal de Agarre">
+    <img src="images/kit-motricidad-lingual.jpg" alt="Kit Motricidad Lingual Progresiva">
+    <img src="images/estimulador-ejercitador-de-elevacion-lingual.jpg" alt="Estimulador-ejercitador de Elevación Lingual">
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px; padding-bottom:24px;">
+  <div class="props">
+    <div class="prop">
+      <span class="num">Resistentes</span>
+      <h3>Uso diario sin desgaste</h3>
+      <p>Pensados para el ritmo de un consultorio: sesión tras sesión, paciente tras paciente.</p>
+    </div>
+    <div class="prop">
+      <span class="num">Reutilizables</span>
+      <h3>Fáciles de higienizar</h3>
+      <p>Materiales que se limpian sin perder forma ni función entre cada uso.</p>
+    </div>
+    <div class="prop">
+      <span class="num">Progresivos</span>
+      <h3>Acompañan cada etapa</h3>
+      <p>Del consultorio a casa, favoreciendo la constancia y potenciando los resultados del tratamiento.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="catalogo" style="padding-top:24px; padding-bottom:24px;">
+  <div class="section-head">
+    <span class="eyebrow">Catálogo</span>
+    <h2>Piezas y kits para cada necesidad</h2>
+    <p>Diseñados por fonoaudiólogas para el trabajo terapéutico real.</p>
+    <p>Consultá disponibilidad y envíos por WhatsApp.</p>
+  </div>
+
+  <div class="catalog-grid">
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/estimulador-bilabial.jpg" alt="Estimulador Bilabial"></div>
+      <div class="kit-body">
+        <h3>Estimulador bilabial</h3>
+        <p>Estimula la activación y coordinación de la musculatura labial. Se coloca entre ambos labios, favoreciendo el cierre oral y la producción de fonemas bilabiales.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Estimulador%20Bilabial" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/boton-labial.jpg" alt="Botón labial"></div>
+      <div class="kit-body">
+        <h3>Botón labial</h3>
+        <p>Estimula el cierre labial y fortalece la musculatura perioral de forma progresiva, aplicando resistencia controlada mediante la tracción del mango.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Bot%C3%B3n%20labial" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  <!-- LINGUAL -->
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/estimulador-sch.jpg" alt="Estimulador S/CH"></div>
+      <div class="kit-body">
+        <h3>Estimulador S/CH</h3>
+        <p>Facilita el correcto posicionamiento del ápice lingual durante la producción de /s/ y /ch/. Se coloca entre los dientes como punto de apoyo para la lengua.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Estimulador%20S%2FCH" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/tope-lingual-anterior.png" alt="Tope Lingual Anterior"></div>
+      <div class="kit-body">
+        <h3>Tope lingual anterior</h3>
+        <p>Se apoya sobre los incisivos con la oclusión cerrada, actuando como límite físico que evita la protrusión lingual y promueve un punto articulatorio adecuado.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Tope%20Lingual%20Anterior" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/estimulador-posterior-lingual.jpg" alt="Estimulador Posterior lingual"></div>
+      <div class="kit-body">
+        <h3>Estimulador posterior lingual</h3>
+        <p>Favorece la elevación del dorso lingual. Su extremo en forma de "C" se apoya sobre el ápice, promoviendo el contacto con el paladar.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Estimulador%20Posterior%20lingual" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/estimulador-elevador-apice-lingual.png" alt="Estimulador elevador de Ápice Lingual"></div>
+      <div class="kit-body">
+        <h3>Estimulador elevador de ápice lingual</h3>
+        <p>Facilita el entrenamiento de la elevación del ápice lingual de forma precisa y controlada, sin generar compensaciones.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Estimulador%20elevador%20de%20%C3%81pice%20Lingual" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/estimulador-ejercitador-de-elevacion-lingual.jpg" alt="Estimulador-ejercitador de Elevación Lingual"></div>
+      <div class="kit-body">
+        <h3>Estimulador-ejercitador de elevación lingual</h3>
+        <p>Diseñado para estimular la elevación de la lengua de manera aislada y precisa. Se apoya sobre el borde de los incisivos inferiores y permite entrenar el ascenso lingual mediante el cierre del dispositivo, promoviendo la activación de la musculatura lingual sin compensaciones mandibulares.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$6.000</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Estimulador-ejercitador%20de%20Elevaci%C3%B3n%20Lingual" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/guia-aro.jpg" alt="Guía Lingual Aro"></div>
+      <div class="kit-body">
+        <h3>Guía lingual aro</h3>
+        <p>Su aro actúa como punto de referencia, desafiando a atravesarlo con la lengua sin contactar los bordes. Favorece control motor fino y coordinación.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20la%20Gu%C3%ADa%20Lingual%20Aro" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/guia-medio-aro.jpg" alt="Guía Lingual Medio Aro"></div>
+      <div class="kit-body">
+        <h3>Guía lingual medio aro</h3>
+        <p>Su abertura parcial permite trabajar la alineación y el afinamiento de la lengua, aumentando progresivamente la exigencia del ejercicio.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20la%20Gu%C3%ADa%20Lingual%20Medio%20Aro" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/guia-triangulo.jpg" alt="Guía Lingual Triángulo"></div>
+      <div class="kit-body">
+        <h3>Guía lingual triángulo</h3>
+        <p>Su abertura progresivamente más estrecha incrementa la exigencia del ejercicio, principalmente al ápice lingual.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20la%20Gu%C3%ADa%20Lingual%20Tri%C3%A1ngulo" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/entrenador-lingual.jpg" alt="Entrenador Lingual"></div>
+      <div class="kit-body">
+        <h3>Entrenador lingual</h3>
+        <p>Favorece la movilidad, precisión y coordinación de la lengua mediante el desplazamiento de una esfera a lo largo de un recorrido.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Entrenador%20Lingual" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  <!-- RÓTICA -->
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/soporte-rotica.jpg" alt="Soporte para Rótica"></div>
+      <div class="kit-body">
+        <h3>Soporte para rótica</h3>
+        <p>Se coloca entre los molares para proporcionar estabilidad mandibular, mientras la barra central favorece la correcta elevación del ápice lingual.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$3.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Soporte%20para%20R%C3%B3tica" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  <!-- AGARRE Y ESCRITURA -->
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/adaptador-lapiz.jpg" alt="Adaptador para Lápiz o Birome"></div>
+      <div class="kit-body">
+        <h3>Adaptador para lápiz o birome</h3>
+        <p>Facilita el agarre de lápices, biromes y otros elementos de escritura, proporcionando mayor estabilidad y control durante su uso.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$6.000</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Adaptador%20para%20L%C3%A1piz%20o%20Birome" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/adaptador-agarre-mano.jpg" alt="Adaptador Universal de Agarre"></div>
+      <div class="kit-body">
+        <h3>Adaptador universal de agarre</h3>
+        <p>Facilita el uso de cubiertos, cepillos de dientes y otros utensilios de uso cotidiano, brindando mayor estabilidad y favoreciendo la autonomía.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$6.000</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Adaptador%20Universal%20de%20Agarre" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  <!-- ALIMENTACIÓN -->
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/reborde-plato-solo.jpg" alt="Reborde adaptable para plato"></div>
+      <div class="kit-body">
+        <h3>Reborde adaptable para plato</h3>
+        <p>Convierte cualquier plato en uno con borde elevado. Su diseño flexible se adapta a distintos tamaños, ayudando a contener los alimentos y evitar derrames.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$10.000</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Reborde%20adaptable%20para%20plato" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo"><img src="images/kit-alimentacion-funcional.jpg" alt="Kit de alimentación funcional"></div>
+      <div class="kit-body">
+        <h3>Kit de alimentación funcional</h3>
+        <p>Reúne recursos para favorecer una alimentación más cómoda, segura y autónoma. Incluye reborde adaptable para plato y adaptador universal de agarre.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$15.000</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Kit%20de%20alimentaci%C3%B3n%20funcional" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KITS ARMADOS -->
+  <h3 class="category-title">Nuestros kits</h3>
+  <div class="catalog-grid">
+
+    <div class="kit-card featured">
+      <div class="featured-inner">
+        <div class="kit-photo">
+          <img src="images/kit-miofuncional-completo.jpg" alt="Kit miofuncional completo — set de instrumentos">
+        </div>
+        <div class="kit-body">
+          <h3>Kit miofuncional completo</h3>
+          <ul class="kit-list">
+            <li>Estimulador bilabial</li>
+            <li>Guía lingual aro</li>
+            <li>Estimulador S/CH</li>
+            <li>Tope lingual anterior</li>
+            <li>Estimulador posterior</li>
+            <li>Elevador de ápice lingual</li>
+            <li>Soporte para rótica</li>
+          </ul>
+          <div class="kit-footer">
+            <span class="kit-price">$25.000</span>
+            <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Kit%20miofuncional%20completo" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo">
+        <img src="images/kit-fonemas-anteriores.png" alt="Kit fonemas anteriores">
+      </div>
+      <div class="kit-body">
+        <h3>Kit fonemas anteriores</h3>
+        <p>Facilita la corrección del punto articulatorio de fonemas anteriores. Favorece el posicionamiento del ápice lingual y evita la protrusión de la lengua.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$6.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Kit%20fonemas%20anteriores" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo">
+        <img src="images/kit-apice-lingual.png" alt="Kit Ápice Lingual">
+      </div>
+      <div class="kit-body">
+        <h3>Kit ápice lingual</h3>
+        <p>Favorece la elevación, el control y la estabilidad del ápice lingual. Ideal para la producción de fonemas róticos, con soporte mandibular adecuado.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$6.500</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Kit%20%C3%81pice%20Lingual" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo">
+        <img src="images/kit-motricidad-lingual.jpg" alt="Kit Motricidad Lingual Progresiva">
+      </div>
+      <div class="kit-body">
+        <h3>Kit motricidad lingual progresiva</h3>
+        <p>Tres guías con niveles crecientes de exigencia para afinar precisión, control motor y coordinación de la lengua a lo largo del tratamiento.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$10.000</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Kit%20Motricidad%20Lingual%20Progresiva" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-photo">
+        <img src="images/kit-competencia-labial.jpg" alt="Kit Competencia Labial">
+      </div>
+      <div class="kit-body">
+        <h3>Kit competencia labial</h3>
+        <p>Entrena progresivamente la fuerza, el tono y la coordinación labial. Trabaja el cierre oral, el control muscular y la estabilidad de los labios.</p>
+        <div class="kit-footer">
+          <span class="kit-price">$10.000</span>
+          <a class="kit-btn" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20el%20Kit%20Competencia%20Labial" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="features-strip">
+  <div class="feature-item">
+    <div class="feature-icon">🏥</div>
+    <span>Para el consultorio y uso en casa</span>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">♻️</div>
+    <span>Reutilizables, resistentes</span>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🧼</div>
+    <span>Fáciles de higienizar</span>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">📈</div>
+    <span>Niveles progresivos de dificultad</span>
+  </div>
+</section>
+
+<section class="cta-section">
+  <span class="eyebrow">Pedidos</span>
+  <h2>Consultá por tu kit</h2>
+  <p>Escribinos por WhatsApp para conocer disponibilidad, envíos y armar el kit que necesitás para tu consultorio o tratamiento.</p>
+  <a class="btn-primary" href="https://wa.me/5493416184400?text=Hola!%20Quiero%20consultar%20por%20los%20ComunicaKits" target="_blank" rel="noopener">
+    Escribir por WhatsApp →
+  </a>
+</section>
+
+<footer>
+  <img src="images/logo-centro-integral.png" alt="Logo Centro Integral de la Comunicación" style="height:110px; width:auto; margin-bottom:16px;">
+  <div>Centro Integral de la Comunicación · Rosario, Santa Fe · <a href="https://www.instagram.com/centrointegraldecomunicacion" target="_blank" rel="noopener" style="color:var(--sage); text-decoration:underline;">@centrointegraldecomunicacion</a></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5493416615698?text=Hola!%20Quiero%20consultar%20por%20los%20ComunicaKits" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.19 1.24-1.95 1.4-.52.11-1.2.2-3.48-.75-2.92-1.21-4.8-4.17-4.94-4.36-.15-.19-1.18-1.57-1.18-2.99 0-1.42.74-2.12 1-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.44.19.5.3.06.11.06.62-.18 1.3z"/></svg>
+</a>
+
+<script>
+  const modal = document.getElementById('coverageModal');
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') modal.classList.remove('open');
+  });
+</script>
+</body>
+</html>
